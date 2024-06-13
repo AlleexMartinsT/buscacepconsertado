@@ -20,21 +20,19 @@ class _HomeState extends State<Home> {
   void _buscarCep() async {
     String cep = _cepController.text;
 
-    // Validar se o campo está vazio
+    
     if (cep.isEmpty) {
       _mostrarErro("Por favor, insira um CEP.");
       return;
     }
 
-    // Validar se o CEP contém apenas números
-    if (!RegExp(r'^[0-9]*$').hasMatch(cep)) {
-      _mostrarErro("O CEP deve conter apenas números.");
-      return;
-    }
-
-    // Validar se o CEP possui 8 dígitos
     if (cep.length != 8) {
       _mostrarErro("O CEP deve ter 8 dígitos.");
+      return;
+    }
+  
+    if (!RegExp(r'^[0-9]*$').hasMatch(cep)) {
+      _mostrarErro("O CEP deve conter apenas números.");
       return;
     }
 
